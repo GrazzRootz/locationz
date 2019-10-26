@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '_s#q*p0p821u6#tz3p(p78ikddo!@xm=-ko3i796sq&i&tlg)q'
+SECRET_KEY = '-@kb3g2^by-=)hj0*&h#ulq6j&mz_reli9(0x=^-+%@k!jtc)j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.gis',
+    'rest_framework',
     'world',
 ]
 
@@ -76,11 +76,15 @@ WSGI_APPLICATION = 'locationz.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-   'default': {
-         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-         'NAME': 'geodjango',
-         'USER': 'geo',
-    },
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
 }
 
 
