@@ -1,8 +1,8 @@
-from .models import Location
+from .models import Locations
 from rest_framework import serializers
 
 
-class LocationSerializer(serializers.HyperlinkedModelSerializer):
+class LocationsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Location
+        model = Locations
         fields = ['name', 'lon', 'lat', 'location_type', 'location_description']
