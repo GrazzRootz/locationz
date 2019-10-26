@@ -1,2 +1,6 @@
 
 locationz/__pycache__/
+
+world/__pycache__/
+
+*.pyc

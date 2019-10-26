@@ -16,7 +16,14 @@ WORKDIR /locationz
 ADD . /locationz/
 
 # add dependencies
-apt install libpq-dev
+# RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main" | tee /etc/apt/sources.list.d/pgdg.list
+
+# RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+
+RUN apt-get update
+
+#RUN apt install libpq-dev, gdal-bin
+RUN apt install -y binutils libproj-dev gdal-bin postgresql-client-9.6
 
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt

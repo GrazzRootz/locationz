@@ -9,3 +9,13 @@ services:
       - .:/locationz
     ports:
       - "8000:8000"
+    depends_on:
+      - database
+  
+  database:
+    image: mdillon/postgis:10
+    environment:
+      - POSTGRES_HOST=db  # default postgres
+      - POSTGRES_PASSWORD=password  # default postgres
+      - POSTGRES_NAME=postgre
+      - POSTGRES_USER=geo
