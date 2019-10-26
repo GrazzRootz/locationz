@@ -6,7 +6,7 @@ from rest_framework import viewsets
 from .serializers import LocationsSerializer
 
 
-class LocationViewSet(viewsets.ModelViewSet):
+class LocationsViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
