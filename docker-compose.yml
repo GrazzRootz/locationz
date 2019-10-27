@@ -8,27 +8,19 @@ services:
     volumes:
       - .:/locationz
     environment:
-          - DATABASE_URL=://root:password@mysql/kubota
+          - DATABASE_URL=://root:password@mysql/locationz
           - DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1,[::1],*
     ports:
       - "8000:8000"
     depends_on:
       - db
-    command: ["/wait-for-it.sh", "db:5432", "--", "/start.sh"]
   
   db:
-    image: mdillon/postgis:10
-    environment:
-      - POSTGRES_HOST=db  # default postgres
-      - POSTGRES_PASSWORD=password  # default postgres
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=geo
+    container_name: mysql_database
+    image: mysql/mysql-server
     ports:
-      - "5432:5432"
-#   Set a volume some that database is not lost after shutting down the container.
-#   I used the name postgres-data but you can changed it to something else.
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
-      - ./postgresql/conf:/etc/postgresql/
-volumes:
-  postgres_data:
+      - /Users/Adam/Development/data/mysql:/var/lib/mysql
